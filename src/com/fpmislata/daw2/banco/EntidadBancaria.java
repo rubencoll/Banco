@@ -10,8 +10,8 @@ package com.fpmislata.daw2.banco;
  */
 public class EntidadBancaria {
     
-    private int idEntidad;
-    private String codigoEntidad;
+    private int idEntidadBancaria;
+    private String codigoEntidadBancaria;
     private String nombre;
     private String cif;
     private TipoEntidadBancaria tipoEntidadBancaria;
@@ -25,27 +25,27 @@ public class EntidadBancaria {
 
     //Constructor Sobrecargado
     public EntidadBancaria(int idEntidad, String codigoEntidad, String nombre, String cif, TipoEntidadBancaria tipoEntidadBancaria) {
-        this.idEntidad = idEntidad;
-        this.codigoEntidad = codigoEntidad;
+        this.idEntidadBancaria = idEntidad;
+        this.codigoEntidadBancaria = codigoEntidad;
         this.nombre = nombre;
         this.cif = cif;
         this.tipoEntidadBancaria = tipoEntidadBancaria;
     }
 
-    public int getIdEntidad() {
-        return idEntidad;
+    public int getIdEntidadBancaria() {
+        return idEntidadBancaria;
     }
 
-    public void setIdEntidad(int idEntidad) {
-        this.idEntidad = idEntidad;
+    public void setIdEntidadBancaria(int idEntidad) {
+        this.idEntidadBancaria = idEntidad;
     }
 
-    public String getCodigoEntidad() {
-        return codigoEntidad;
+    public String getCodigoEntidadBancaria() {
+        return codigoEntidadBancaria;
     }
 
-    public void setCodigoEntidad(String codigoEntidad) {
-        this.codigoEntidad = codigoEntidad;
+    public void setCodigoEntidadBancaria(String codigoEntidadBancaria) {
+        this.codigoEntidadBancaria = codigoEntidadBancaria;
     }
 
     public String getNombre() {

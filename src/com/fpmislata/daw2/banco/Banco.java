@@ -4,6 +4,10 @@
  */
 package com.fpmislata.daw2.banco;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -15,11 +19,12 @@ public class Banco {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
 
+
         Scanner sc = new Scanner(System.in);
-        
+
         int seleccionMenu = -1;
 
         while (seleccionMenu != 0) {
@@ -55,15 +60,23 @@ public class Banco {
 
             } else if (seleccionMenu == 0) {    //Salir
 
+                System.out.println("");
+                System.out.println("BancStafa, Tu Ignorancia es Nuestro Beneficio...");
+                Thread.sleep(2000);
+                System.out.println("");
+
                 break;
             }
         }
     }
 
-    private static void menuEntidadBancaria() {
-        
-         Scanner scEntidad = new Scanner(System.in);
-        
+    private static void menuEntidadBancaria() { // Menu Entidad Bancaria
+
+        List<EntidadBancaria> listaEntidadesBancarias = new ArrayList<EntidadBancaria>(); //Declaramos una arrayList de entidades bancarias
+        Map<Integer, EntidadBancaria> mapEntidadBancaria = new HashMap<>();  //Declaramos el Map de entidad bancaria.
+
+        Scanner scEntidad = new Scanner(System.in);
+
         int seleccionMenuEntidad = -1;
 
         while (seleccionMenuEntidad != 0) {
@@ -83,11 +96,11 @@ public class Banco {
 
             if (seleccionMenuEntidad == 1) {   // Insertar Entidad Bancaria
 
-                menuEntidadBancaria();
+                insertarEntidadBancaria(listaEntidadesBancarias, mapEntidadBancaria);
 
             } else if (seleccionMenuEntidad == 2) { // Ver Entidades Bancarias
 
-                menuSucursalBancaria();
+                imprimirListaEntidadesBancarias(listaEntidadesBancarias);
 
             } else if (seleccionMenuEntidad == 3) {    // Ver Entidad Bancaria por ID
 
@@ -101,7 +114,76 @@ public class Banco {
 
                 break;
             }
-        }  
+        }
+    }
+
+    private static void insertarEntidadBancaria(List<EntidadBancaria> listaEntidadesBancarias, Map<Integer, EntidadBancaria> mapEntidadesBancarias) {
+
+        EntidadBancaria entidadBancaria = new EntidadBancaria();
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("");
+        System.out.println("Dime la Identificador de la Entidad: ");
+
+        int id = sc.nextInt();
+        entidadBancaria.setIdEntidadBancaria(id);
+
+        System.out.println("");
+        System.out.println("Dime el Codigo de la Entidad: ");
+
+        String codigo = sc.next();
+        entidadBancaria.setCodigoEntidadBancaria(codigo);
+
+        System.out.println("");
+        System.out.println("Dime el Nombre de la Entidad " + codigo + " : ");
+
+        String nombre = sc.next();
+        entidadBancaria.setNombre(nombre);
+
+        System.out.println("");
+        System.out.println("Dime el CIF de la Entidad " + nombre + " con codigo " + codigo + " : ");
+
+        String cif = sc.next();
+        entidadBancaria.setCif(cif);
+
+        System.out.println("");
+        System.out.println("Dime el tipo de Entidad: ");
+
+        System.out.println("1- BANCO");
+        System.out.println("2- CAJA_DE_AHORRO");
+        System.out.println("3- COOPERATIVAS_DE_CREDITO");
+        System.out.println("4- ESTABLECIMIENTOS_FINANCIEROS_DE_CREDITO");
+
+        int tipoEntidadBcancaria = sc.nextInt();
+
+        TipoEntidadBancaria tipoEntidadBancaria = null;
+
+        if (tipoEntidadBcancaria == 1) {
+
+            tipoEntidadBancaria = entidadBancaria.getTipoEntidadBancaria().BANCO;
+
+        } else if (tipoEntidadBcancaria == 2) {
+
+            tipoEntidadBancaria = entidadBancaria.getTipoEntidadBancaria().CAJA_DE_AHORRO;
+
+        } else if (tipoEntidadBcancaria == 3) {
+
+            tipoEntidadBancaria = entidadBancaria.getTipoEntidadBancaria().COOPERATIVAS_DE_CREDITO;
+
+        } else if (tipoEntidadBcancaria == 4) {
+            tipoEntidadBancaria = entidadBancaria.getTipoEntidadBancaria().ESTABLECIMIENTOS_FINANCIEROS_DE_CREDITO;
+        }
+
+        entidadBancaria.setTipoEntidadBancaria(tipoEntidadBancaria);
+
+        mapEntidadesBancarias.put(id, entidadBancaria);  //Insertamos un map, indicando el Objeto y un indice (Id entidad)
+        listaEntidadesBancarias.add(entidadBancaria);    //añadimos a la lista
+
+    }
+
+    private static void imprimirListaEntidadesBancarias(List<EntidadBancaria> listaEntidadesBancariasa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private static void menuSucursalBancaria() {
