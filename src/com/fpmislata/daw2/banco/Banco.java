@@ -103,13 +103,7 @@ public class Banco {
                 imprimirListaEntidadesBancarias(listaEntidadesBancarias);
 
             } else if (seleccionMenuEntidad == 3) {    // Ver Entidad Bancaria por ID
-
-                menuCuentaBancaria();
-
             } else if (seleccionMenuEntidad == 4) {    // Borrar Entidad Bancaria
-
-                menuMovimientoBancario();
-
             } else if (seleccionMenuEntidad == 0) {    // Volver
 
                 break;
@@ -183,15 +177,140 @@ public class Banco {
     }
 
     private static void imprimirListaEntidadesBancarias(List<EntidadBancaria> listaEntidadesBancariasa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("");
+        System.out.println("########### LISTA ############");
+
+        for (EntidadBancaria entidadBancaria : listaEntidadesBancariasa) {
+            System.out.println("-------------------------------------------------");
+            System.out.println("ID: " + entidadBancaria.getIdEntidadBancaria());
+            System.out.print("Codigo: " + entidadBancaria.getCodigoEntidadBancaria());
+            System.out.println("Nombre: " + entidadBancaria.getNombre());
+            System.out.println("Cif: " + entidadBancaria.getCif());
+            System.out.println("Tipo Entidad: " + entidadBancaria.getTipoEntidadBancaria());
+            System.out.println("-------------------------------------------------");
+        }
+
+        System.out.println("##############################");
+
+        System.out.println("");
     }
 
     private static void menuSucursalBancaria() {
     }
 
     private static void menuCuentaBancaria() {
+
+        List<CuentaBancaria> listaCuentasBancarias = new ArrayList<CuentaBancaria>(); //Declaramos una arrayList de entidades bancarias
+        Map<Integer, CuentaBancaria> mapCuentaBancaria = new HashMap<>();  //Declaramos el Map de entidad bancaria.
+
+        Scanner scEntidad = new Scanner(System.in);
+
+        int seleccionMenuEntidad = -1;
+
+        while (seleccionMenuEntidad != 0) {
+
+            System.out.println("");
+            System.out.println("######## MENU CUENTA BANCARIA #########");
+            System.out.println("");
+            System.out.println(" 1- Insertar Cuenta Bancaria");
+            System.out.println(" 2- Ver Todos las Cuentas Bancarias");
+            System.out.println(" 3- Ver Cuenta Bancaria por ID");
+            System.out.println(" 4- Borrar Cuenta Bancaria");
+            System.out.println(" 5- Ver un Cuenta Bancaria pasando Objero");
+            System.out.println(" 6- Buscar Cuenta Bancaria por Map");
+            System.out.println("");
+            System.out.println("0- Volver");
+            System.out.println("");
+            System.out.println("#######################################");
+            seleccionMenuEntidad = scEntidad.nextInt();
+
+            if (seleccionMenuEntidad == 1) {   // Insertar Entidad Bancaria
+                //  insertarCuentaBancaria(listaCuentasBancarias, mapCuentaBancaria);
+            } else if (seleccionMenuEntidad == 2) { // Ver Entidades Bancarias
+                // imprimirListaCuentasBancarias(listaCuentasBancarias);
+            } else if (seleccionMenuEntidad == 3) {    // Ver Entidad Bancaria por ID
+            } else if (seleccionMenuEntidad == 4) {    // Borrar Entidad Bancaria
+            } else if (seleccionMenuEntidad == 5) {
+
+                CuentaBancaria cuentaBancaria = new CuentaBancaria();
+
+
+
+
+            } else if (seleccionMenuEntidad == 0) {    // Volver
+
+                break;
+            }
+        }
+    }
+
+    private static void buscarCuentaBancariaMapID(Map<Integer, CuentaBancaria> mapCuentaBancaria, Integer idCuentaBancaria) {
+
+        System.out.println("########### CUENTA BANCARIA ############");
+
+        CuentaBancaria cuentaBancaria = mapCuentaBancaria.get(idCuentaBancaria);
+        List<SucursalBancaria> listaSucursalesBancarias = cuentaBancaria.getSucursalBancaria();
+        
+        System.out.println("-------------------------------------------------");
+           
+        System.out.println(cuentaBancaria.getInformacionCuentaBancaria());
+        
+        
+        System.out.println("-------------------------------------------------");
+
+        System.out.println("##############################");
+
+        System.out.println("");
     }
 
     private static void menuMovimientoBancario() {
+
+        List<MovimientoBancario> listaMovimientosBancarios = new ArrayList<MovimientoBancario>(); //Declaramos una arrayList de entidades bancarias
+        Map<Integer, MovimientoBancario> mapMovimientoBancaria = new HashMap<>();  //Declaramos el Map de entidad bancaria.
+
+        Scanner scEntidad = new Scanner(System.in);
+
+        int seleccionMenuEntidad = -1;
+
+        while (seleccionMenuEntidad != 0) {
+
+            System.out.println("");
+            System.out.println("######## MENU MOVIMIENTO BANCARIO #########");
+            System.out.println("");
+            System.out.println(" 1- Insertar Movimiento Bancario");
+            System.out.println(" 2- Ver Todos los Movimientos Bancarios");
+            System.out.println(" 3- Ver Movimiento Bancario por ID");
+            System.out.println(" 4- Borrar Entidad Bancaria");
+            System.out.println(" 5- Ver un Movimiento pasando Objero");
+            System.out.println("");
+            System.out.println("0- Volver");
+            System.out.println("");
+            System.out.println("#######################################");
+            seleccionMenuEntidad = scEntidad.nextInt();
+
+            if (seleccionMenuEntidad == 1) {   // Insertar Entidad Bancaria
+
+                insertarMovimientoBancario(listaMovimientosBancarios, mapMovimientoBancaria);
+
+            } else if (seleccionMenuEntidad == 2) { // Ver Entidades Bancarias
+
+                imprimirListaMovimientosBancarios(listaMovimientosBancarios);
+
+            } else if (seleccionMenuEntidad == 3) {    // Ver Entidad Bancaria por ID
+            } else if (seleccionMenuEntidad == 4) {    // Borrar Entidad Bancaria
+            } else if (seleccionMenuEntidad == 5) {
+            } else if (seleccionMenuEntidad == 0) {    // Volver
+
+                break;
+            }
+        }
+    }
+
+    private static void insertarMovimientoBancario(List<MovimientoBancario> listaMovimientosBancarios, Map<Integer, MovimientoBancario> mapMovimientoBancaria) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static void imprimirListaMovimientosBancarios(List<MovimientoBancario> listaMovimientosBancarios) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

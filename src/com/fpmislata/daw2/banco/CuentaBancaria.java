@@ -85,5 +85,14 @@ public class CuentaBancaria {
         this.cif = cif;
     }
     
+        //Metodos
+    
+    public String getInformacionCuentaBancaria() {
+
+        String informacionCoche = " ID: " + this.idCuentaBancaria + " \n Numero Cuenta: " + this.numeroCuenta + "\n DC: " + this.dc + "\n Saldo: " + this.saldo + "\n CIF: "+this.cif;
+
+        return informacionCoche;
+    }
+    
     
 }
